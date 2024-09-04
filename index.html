@@ -20,13 +20,30 @@
         header {
             background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
             color: #fff;
-            padding: 10px 0;
+            padding: 10px 20px; /* Adjusted padding for space */
             width: 100%;
+            display: flex;
+            align-items: center; /* Align items vertically center */
+            justify-content: space-between; /* Distribute space between items */
         }
         header h1 {
             margin: 0;
             font-size: 2em; /* Adjust font size as needed */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a similar sans-serif font */
+        }
+        .apps-button {
+            background-color: #007bff; /* Blue background color */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em; /* Adjust font size as needed */
+            transition: background-color 0.3s ease;
+            text-decoration: none; /* Remove underline */
+        }
+        .apps-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
         }
         .container {
             padding: 20px;
@@ -85,6 +102,7 @@
 </head>
 <body>
     <header>
+        <a href="apps.html" class="apps-button" target="_blank">Apps</a>
         <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
     </header>
     <div class="container">
@@ -105,61 +123,14 @@
             <div class="icon">
                 <img src="2048.jpg" alt="New App">
             </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
-        <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
-            <div class="icon">
-                <img src="newapp.jpg" alt="New App">
-            </div>
-          </a>
+        </a>
         <!-- New App -->
         <a href="newapp.html" target="_blank" class="icon-container">
             <div class="icon">
                 <img src="newapp.jpg" alt="New App">
             </div>
         </a>
+        <!-- Repeat for more apps as needed -->
     </div>
     <footer>
         <div>&copy; 2024 K.O Sites</div>
