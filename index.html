@@ -9,14 +9,16 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: url('https://cdn-0001.qstv.on.epicgames.com/DogTCbaUTQaBFQnQQe/image/landscape_comp.jpeg') no-repeat center center fixed;
+            background-size: cover;
             text-align: center;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: #fff; /* Makes text more readable on dark backgrounds */
         }
         header {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
             color: #fff;
             padding: 10px 0;
             position: relative;
@@ -54,11 +56,25 @@
             cursor: pointer;
         }
         footer {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
             color: #fff;
             padding: 10px 0;
             text-align: center;
             width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        .footer-content {
+            margin-top: 10px;
+        }
+        .employee-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+        .employee-list li {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -69,13 +85,21 @@
     <div class="container">
         <a href="1v1-lol.html" target="_blank" class="icon-container">
             <div class="icon">
-            
-                <img src="1v1-lol.jpg"
-                    </div>
+                <img src="1v1-lol.jpg" alt="1v1 LOL">
+            </div>
         </a>
     </div>
     <footer>
-        &copy; 2024 K.O Sites
+        <div>&copy; 2024 K.O Sites</div>
+        <div class="footer-content">
+            <p>Developed by:</p>
+            <ul class="employee-list">
+              
+                <li>Ceo: Lucca Alonso</li>
+                <li>CFO : Maddox Snow</li>
+            
+            </ul>
+        </div>
     </footer>
 </body>
 </html>
