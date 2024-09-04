@@ -1,2 +1,2 @@
 # KO-Sites.github.io
-Ublocked sites with unblocked games, sites, apps, proxies
+Ublocked sites with unblocked games,
