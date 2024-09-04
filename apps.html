@@ -49,6 +49,37 @@
             padding: 20px;
             flex: 1; /* Ensures the content takes up remaining space */
         }
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next line if they overflow */
+            justify-content: center; /* Center items horizontally */
+            gap: 20px; /* Adds spacing between items */
+        }
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .icon-container:hover .icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
         footer {
             background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
             color: #fff;
@@ -78,8 +109,26 @@
         <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
     </header>
     <div class="content">
-        <!-- Content for the Apps page goes here -->
-      
+        <div class="container">
+            <!-- Example of an app -->
+            <a href="https://turbo-eureka-v6qv6wxq56592pr4v-8080.app.github.dev/a/hvtrs8%2F-vkd%2Cpwfdycn%2Cuq%2Fdegd-pmpwlcr" target="_blank" class="icon-container">
+                <div class="icon">
+                    <img src="youtube.jpg" alt="App 1">
+                </div>
+            </a>
+            <!-- Repeat the following block for each app -->
+            <a href="https://example.com/app2" target="_blank" class="icon-container">
+                <div class="icon">
+                    <img src="https://example.com/image2.png" alt="App 2">
+                </div>
+            </a>
+            <a href="https://example.com/app3" target="_blank" class="icon-container">
+                <div class="icon">
+                    <img src="https://example.com/image3.png" alt="App 3">
+                </div>
+            </a>
+            <!-- Add more apps as needed -->
+        </div>
     </div>
     <footer>
         <div>&copy; 2024 K.O Sites</div>
