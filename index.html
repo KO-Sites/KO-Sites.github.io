@@ -46,17 +46,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
             transition: transform 0.3s ease;
         }
 
         .icon {
             width: 100px;
             height: 100px;
-            border: 2px solid #000; /* Added black border */
+            border: 2px solid #000;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* Needed for the text overlay */
         }
 
         .icon img {
@@ -69,6 +71,23 @@
             transform: scale(1.1);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             cursor: pointer;
+        }
+
+        .icon-container:hover::after {
+            content: attr(data-name); /* Use the data-name attribute for the text */
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+            display: block;
+            z-index: 1;
         }
 
         footer {
@@ -101,28 +120,28 @@
 
     <div class="container">
         <!-- 1v1 LOL App -->
-        <a href="1v1-lol.html" target="_blank" class="icon-container">
+        <a href="1v1-lol.html" target="_blank" class="icon-container" data-name="1v1 LOL">
             <div class="icon">
                 <img src="1v1-lol.jpg" alt="1v1 LOL">
             </div>
         </a>
 
         <!-- Cookie Clicker App -->
-        <a href="cookieclicker.html" target="_blank" class="icon-container">
+        <a href="cookieclicker.html" target="_blank" class="icon-container" data-name="Cookie Clicker">
             <div class="icon">
                 <img src="cookieclicker.jpg" alt="Cookie Clicker">
             </div>
         </a>
 
         <!-- 2048 App -->
-        <a href="2048.html" target="_blank" class="icon-container">
+        <a href="2048.html" target="_blank" class="icon-container" data-name="2048">
             <div class="icon">
                 <img src="2048.jpg" alt="2048">
             </div>
         </a>
 
         <!-- New App -->
-        <a href="newapp.html" target="_blank" class="icon-container">
+        <a href="newapp.html" target="_blank" class="icon-container" data-name="New App">
             <div class="icon">
                 <img src="newapp.jpg" alt="New App">
             </div>
