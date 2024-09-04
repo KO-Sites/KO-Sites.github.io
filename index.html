@@ -54,7 +54,8 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 0;
         }
 
         .icon img {
@@ -75,6 +76,23 @@
             background: rgba(0, 0, 0, 0.6);
             opacity: 0;
             transition: opacity 0.3s ease;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px #fff; /* Default glow effect */
+        }
+
+        .icon-container:hover .text {
+            opacity: 1;
+            text-shadow: 
+                0 0 10px #ff0000, /* Red glow */
+                0 0 20px #ff7300, /* Orange glow */
+                0 0 30px #fffb00, /* Yellow glow */
+                0 0 40px #48ff00, /* Green glow */
+                0 0 50px #00ffd5, /* Cyan glow */
+                0 0 60px #002bff, /* Blue glow */
+                0 0 70px #7a00ff, /* Violet glow */
+                0 0 80px #ff00c8; /* Magenta glow */
         }
 
         .icon-container:hover .icon {
@@ -82,8 +100,31 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
 
-        .icon-container:hover .text {
-            opacity: 1;
+        .icon-container:hover:before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(8px);
+            animation: glowing-outline 20s linear infinite;
+        }
+
+        @keyframes glowing-outline {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
         }
 
         footer {
@@ -106,7 +147,7 @@
 </head>
 <body>
     <header>
-        <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
+        <h1>𝕂.𝕎 𝕊𝕚𝕥𝕖𝕤</h1>
     </header>
 
     <div class="container">
@@ -141,9 +182,9 @@
         <!-- New game entry -->
         <a href="newgame.html" class="icon-container" data-name="New Game">
             <div class="icon">
-                <img src="newgame.jpg" alt="New App">
+                <img src="newgame.jpg" alt="New Game">
             </div>
-            <div class="text">New App</div>
+            <div class="text">New Game</div>
         </a>
     </div>
 
