@@ -21,7 +21,7 @@
             background-color: rgba(51, 51, 51, 0.8);
             padding: 10px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
 
@@ -73,26 +73,26 @@
             color: #fff;
             font-size: 1em;
             padding: 5px;
-            background: transparent; /* Transparent background */
+            background: transparent;
             opacity: 0;
             transition: opacity 0.3s ease;
             font-family: Arial, sans-serif;
             font-weight: bold;
             letter-spacing: 1px;
-            text-shadow: 0 0 5px #fff; /* Default glow effect */
+            text-shadow: 0 0 5px #fff;
         }
 
         .icon-container:hover .text {
             opacity: 1;
             text-shadow: 
-                0 0 10px #ff0000, /* Red glow */
-                0 0 20px #ff7300, /* Orange glow */
-                0 0 30px #fffb00, /* Yellow glow */
-                0 0 40px #48ff00, /* Green glow */
-                0 0 50px #00ffd5, /* Cyan glow */
-                0 0 60px #002bff, /* Blue glow */
-                0 0 70px #7a00ff, /* Violet glow */
-                0 0 80px #ff00c8; /* Magenta glow */
+                0 0 10px #ff0000, 
+                0 0 20px #ff7300, 
+                0 0 30px #fffb00, 
+                0 0 40px #48ff00, 
+                0 0 50px #00ffd5, 
+                0 0 60px #002bff, 
+                0 0 70px #7a00ff, 
+                0 0 80px #ff00c8;
         }
 
         .icon-container:hover .icon {
@@ -143,11 +143,74 @@
         .employee-list li {
             margin: 5px 0;
         }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            color: #fff;
+            margin-top: 20px;
+        }
     </style>
+    <script>
+        function renameTab() {
+            var selectedOption = document.getElementById('tabOptions').value;
+            document.title = selectedOption;
+        }
+
+        // Detect Ctrl + Y key combination and open a new tab
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key === 'y') {
+                event.preventDefault();
+                var selectedOption = document.getElementById('tabOptions').value;
+
+                // Generate URLs for each option, including the custom K.O Sites
+                var url = '';
+                if (selectedOption === 'K.O Sites') {
+                    url = 'https://KO-Sites.github.io';
+                } else {
+                    url = `https://${selectedOption.replace(/\s+/g, '').toLowerCase()}.com`;
+                }
+
+                window.open(url, '_blank');
+            }
+        });
+
+        // Auto rename tab when option changes
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectElement = document.getElementById('tabOptions');
+            selectElement.addEventListener('change', renameTab);
+        });
+    </script>
 </head>
 <body>
     <header>
         <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
+        <div>
+            <!-- Title renamer section -->
+            <h2>Tab Cloaker</h2> <!-- Added the "Tab Cloaker" heading -->
+            <select id="tabOptions">
+                <option value="Google Drive">Google Drive</option>
+                <option value="Canvas">Canvas</option>
+                <option value="Clever">Clever</option>
+                <option value="Skyward">Skyward</option>
+                <option value="Schoology">Schoology</option>
+                <option value="Blackboard">Blackboard</option>
+                <option value="Edmodo">Edmodo</option>
+                <option value="Seesaw">Seesaw</option>
+                <option value="ClassDojo">ClassDojo</option>
+                <option value="Khan Academy">Khan Academy</option>
+                <option value="K.O Sites">K.O Sites</option>
+            </select>
+            <p>Press <strong>Ctrl + Y</strong> to open a new tab with the selected option as the URL!</p>
+        </div>
     </header>
 
     <div class="container">
