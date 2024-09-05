@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K.O Sites</title>
@@ -16,7 +15,6 @@
             min-height: 100vh;
             text-align: center;
         }
-
         header {
             background-color: rgba(51, 51, 51, 0.8);
             padding: 10px 20px;
@@ -24,13 +22,11 @@
             justify-content: space-between;
             align-items: center;
         }
-
         header h1 {
             margin: 0;
             font-size: 2em;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         .container {
             padding: 20px;
             flex: 1;
@@ -39,14 +35,12 @@
             justify-content: center;
             gap: 20px;
         }
-
         .icon-container {
             position: relative;
             text-decoration: none;
             width: 100px;
             height: 100px;
         }
-
         .icon {
             width: 100%;
             height: 100%;
@@ -57,13 +51,11 @@
             position: relative;
             z-index: 0;
         }
-
         .icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .icon-container .text {
             position: absolute;
             bottom: 0;
@@ -81,7 +73,6 @@
             letter-spacing: 1px;
             text-shadow: 0 0 5px #fff;
         }
-
         .icon-container:hover .text {
             opacity: 1;
             text-shadow: 
@@ -94,12 +85,10 @@
                 0 0 70px #7a00ff, 
                 0 0 80px #ff00c8;
         }
-
         .icon-container:hover .icon {
             transform: scale(1.1);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
-
         .icon-container:hover:before {
             content: "";
             position: absolute;
@@ -114,7 +103,6 @@
             filter: blur(8px);
             animation: glowing-outline 20s linear infinite;
         }
-
         @keyframes glowing-outline {
             0% {
                 background-position: 0 0;
@@ -126,24 +114,20 @@
                 background-position: 0 0;
             }
         }
-
         footer {
             background-color: rgba(51, 51, 51, 0.8);
             padding: 10px 20px;
             text-align: center;
             font-size: 0.9em;
         }
-
         .employee-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
         .employee-list li {
             margin: 5px 0;
         }
-
         select {
             padding: 10px;
             font-size: 16px;
@@ -164,13 +148,11 @@
             var selectedOption = document.getElementById('tabOptions').value;
             document.title = selectedOption;
         }
-
         // Detect Ctrl + Y key combination and open a new tab
         document.addEventListener('keydown', function(event) {
             if (event.ctrlKey && event.key === 'y') {
                 event.preventDefault();
                 var selectedOption = document.getElementById('tabOptions').value;
-
                 // Generate URLs for each option, including the custom K.O Sites
                 var url = '';
                 if (selectedOption === 'K.O Sites') {
@@ -178,11 +160,9 @@
                 } else {
                     url = `https://${selectedOption.replace(/\s+/g, '').toLowerCase()}.com`;
                 }
-
                 window.open(url, '_blank');
             }
         });
-
         // Auto rename tab when option changes
         document.addEventListener('DOMContentLoaded', function() {
             var selectElement = document.getElementById('tabOptions');
@@ -212,53 +192,300 @@
             <p>Press <strong>Ctrl + Y</strong> to open a new tab with the selected option as the URL!</p>
         </div>
     </header>
-
     <div class="container">
+        <!-- Existing games -->
         <a href="1v1-lol.html" class="icon-container" data-name="1v1 LOL">
             <div class="icon">
                 <img src="1v1-lol.jpg" alt="1v1 LOL">
             </div>
             <div class="text">1v1.LOL</div>
         </a>
-
         <a href="cookieclicker.html" class="icon-container" data-name="Cookie Clicker">
             <div class="icon">
                 <img src="cookieclicker.jpg" alt="Cookie Clicker">
             </div>
             <div class="text">Cookie Clicker</div>
         </a>
-
         <a href="2048.html" class="icon-container" data-name="2048">
             <div class="icon">
                 <img src="2048.jpg" alt="2048">
             </div>
             <div class="text">2048</div>
         </a>
-
         <a href="newapp.html" class="icon-container" data-name="New App">
             <div class="icon">
                 <img src="newapp.jpg" alt="Coming Soon">
             </div>
             <div class="text">Coming Soon</div>
         </a>
-
-        <a href="newgame.html" class="icon-container" data-name="New Game">
+        <a href="among-us.html" class="icon-container" data-name="Among Us">
             <div class="icon">
-                <img src="newgame.jpg" alt="Coming Soon">
+                <img src="among-us.jpg" alt="Among Us">
             </div>
             <div class="text">Coming Soon</div>
         </a>
+        <!-- New games -->
+        <a href="game1.html" class="icon-container" data-name="Game 1">
+            <div class="icon">
+                <img src="game1.jpg" alt="Game 1">
+            </div>
+            <div class="text">Game 1</div>
+        </a>
+        <a href="game2.html" class="icon-container" data-name="Game 2">
+            <div class="icon">
+                <img src="game2.jpg" alt="Game 2">
+            </div>
+            <div class="text">Game 2</div>
+        </a>
+        <a href="game3.html" class="icon-container" data-name="Game 3">
+            <div class="icon">
+                <img src="game3.jpg" alt="Game 3">
+            </div>
+            <div class="text">Game 3</div>
+        </a>
+        <a href="game4.html" class="icon-container" data-name="Game 4">
+            <div class="icon">
+                <img src="game4.jpg" alt="Game 4">
+            </div>
+            <div class="text">Game 4</div>
+        </a>
+        <a href="game5.html" class="icon-container" data-name="Game 5">
+            <div class="icon">
+                <img src="game5.jpg" alt="Game 5">
+            </div>
+            <div class="text">Game 5</div>
+        </a>
+        <a href="game6.html" class="icon-container" data-name="Game 6">
+            <div class="icon">
+                <img src="game6.jpg" alt="Game 6">
+            </div>
+            <div class="text">Game 6</div>
+        </a>
+        <a href="game7.html" class="icon-container" data-name="Game 7">
+            <div class="icon">
+                <img src="game7.jpg" alt="Game 7">
+            </div>
+            <div class="text">Game 7</div>
+        </a>
+        <a href="game8.html" class="icon-container" data-name="Game 8">
+            <div class="icon">
+                <img src="game8.jpg" alt="Game 8">
+            </div>
+            <div class="text">Game 8</div>
+        </a>
+        <a href="game9.html" class="icon-container" data-name="Game 9">
+            <div class="icon">
+                <img src="game9.jpg" alt="Game 9">
+            </div>
+            <div class="text">Game 9</div>
+        </a>
+        <a href="game10.html" class="icon-container" data-name="Game 10">
+            <div class="icon">
+                <img src="game10.jpg" alt="Game 10">
+            </div>
+            <div class="text">Game 10</div>
+        </a>
+        <a href="game11.html" class="icon-container" data-name="Game 11">
+            <div class="icon">
+                <img src="game11.jpg" alt="Game 11">
+            </div>
+            <div class="text">Game 11</div>
+        </a>
+        <a href="game12.html" class="icon-container" data-name="Game 12">
+            <div class="icon">
+                <img src="game12.jpg" alt="Game 12">
+            </div>
+            <div class="text">Game 12</div>
+        </a>
+        <a href="game13.html" class="icon-container" data-name="Game 13">
+            <div class="icon">
+                <img src="game13.jpg" alt="Game 13">
+            </div>
+            <div class="text">Game 13</div>
+        </a>
+        <a href="game14.html" class="icon-container" data-name="Game 14">
+            <div class="icon">
+                <img src="game14.jpg" alt="Game 14">
+            </div>
+            <div class="text">Game 14</div>
+        </a>
+        <a href="game15.html" class="icon-container" data-name="Game 15">
+            <div class="icon">
+                <img src="game15.jpg" alt="Game 15">
+            </div>
+            <div class="text">Game 15</div>
+        </a>
+        <a href="game16.html" class="icon-container" data-name="Game 16">
+            <div class="icon">
+                <img src="game16.jpg" alt="Game 16">
+            </div>
+            <div class="text">Game 16</div>
+        </a>
+        <a href="game17.html" class="icon-container" data-name="Game 17">
+            <div class="icon">
+                <img src="game17.jpg" alt="Game 17">
+            </div>
+            <div class="text">Game 17</div>
+        </a>
+        <a href="game18.html" class="icon-container" data-name="Game 18">
+            <div class="icon">
+                <img src="game18.jpg" alt="Game 18">
+            </div>
+            <div class="text">Game 18</div>
+        </a>
+        <a href="game19.html" class="icon-container" data-name="Game 19">
+            <div class="icon">
+                <img src="game19.jpg" alt="Game 19">
+            </div>
+            <div class="text">Game 19</div>
+        </a>
+        <a href="game20.html" class="icon-container" data-name="Game 20">
+            <div class="icon">
+                <img src="game20.jpg" alt="Game 20">
+            </div>
+            <div class="text">Game 20</div>
+        </a>
+        <a href="game21.html" class="icon-container" data-name="Game 21">
+            <div class="icon">
+                <img src="game21.jpg" alt="Game 21">
+            </div>
+            <div class="text">Game 21</div>
+        </a>
+        <a href="game22.html" class="icon-container" data-name="Game 22">
+            <div class="icon">
+                <img src="game22.jpg" alt="Game 22">
+            </div>
+            <div class="text">Game 22</div>
+        </a>
+        <a href="game23.html" class="icon-container" data-name="Game 23">
+            <div class="icon">
+                <img src="game23.jpg" alt="Game 23">
+            </div>
+            <div class="text">Game 23</div>
+        </a>
+        <a href="game24.html" class="icon-container" data-name="Game 24">
+            <div class="icon">
+                <img src="game24.jpg" alt="Game 24">
+            </div>
+            <div class="text">Game 24</div>
+        </a>
+        <a href="game25.html" class="icon-container" data-name="Game 25">
+            <div class="icon">
+                <img src="game25.jpg" alt="Game 25">
+            </div>
+            <div class="text">Game 25</div>
+        </a>
+        <a href="game26.html" class="icon-container" data-name="Game 26">
+            <div class="icon">
+                <img src="game26.jpg" alt="Game 26">
+            </div>
+            <div class="text">Game 26</div>
+        </a>
+        <a href="game27.html" class="icon-container" data-name="Game 27">
+            <div class="icon">
+                <img src="game27.jpg" alt="Game 27">
+            </div>
+            <div class="text">Game 27</div>
+        </a>
+        <a href="game28.html" class="icon-container" data-name="Game 28">
+            <div class="icon">
+                <img src="game28.jpg" alt="Game 28">
+            </div>
+            <div class="text">Game 28</div>
+        </a>
+        <a href="game29.html" class="icon-container" data-name="Game 29">
+            <div class="icon">
+                <img src="game29.jpg" alt="Game 29">
+            </div>
+            <div class="text">Game 29</div>
+        </a>
+        <a href="game30.html" class="icon-container" data-name="Game 30">
+            <div class="icon">
+                <img src="game30.jpg" alt="Game 30">
+            </div>
+            <div class="text">Game 30</div>
+        </a>
+        <a href="game31.html" class="icon-container" data-name="Game 31">
+            <div class="icon">
+                <img src="game31.jpg" alt="Game 31">
+            </div>
+            <div class="text">Game 31</div>
+        </a>
+        <a href="game32.html" class="icon-container" data-name="Game 32">
+            <div class="icon">
+                <img src="game32.jpg" alt="Game 32">
+            </div>
+            <div class="text">Game 32</div>
+        </a>
+        <a href="game33.html" class="icon-container" data-name="Game 33">
+            <div class="icon">
+                <img src="game33.jpg" alt="Game 33">
+            </div>
+            <div class="text">Game 33</div>
+        </a>
+        <a href="game34.html" class="icon-container" data-name="Game 34">
+            <div class="icon">
+                <img src="game34.jpg" alt="Game 34">
+            </div>
+            <div class="text">Game 34</div>
+        </a>
+        <a href="game35.html" class="icon-container" data-name="Game 35">
+            <div class="icon">
+                <img src="game35.jpg" alt="Game 35">
+            </div>
+            <div class="text">Game 35</div>
+        </a>
+        <a href="game36.html" class="icon-container" data-name="Game 36">
+            <div class="icon">
+                <img src="game36.jpg" alt="Game 36">
+            </div>
+            <div class="text">Game 36</div>
+        </a>
+        <a href="game37.html" class="icon-container" data-name="Game 37">
+            <div class="icon">
+                <img src="game37.jpg" alt="Game 37">
+            </div>
+            <div class="text">Game 37</div>
+        </a>
+        <a href="game38.html" class="icon-container" data-name="Game 38">
+            <div class="icon">
+                <img src="game38.jpg" alt="Game 38">
+            </div>
+            <div class="text">Game 38</div>
+        </a>
+        <a href="game39.html" class="icon-container" data-name="Game 39">
+            <div class="icon">
+                <img src="game39.jpg" alt="Game 39">
+            </div>
+            <div class="text">Game 39</div>
+        </a>
+        <a href="game40.html" class="icon-container" data-name="Game 40">
+            <div class="icon">
+                <img src="game40.jpg" alt="Game 40">
+            </div>
+            <div class="text">Game 40</div>
+        </a>
+        <a href="game41.html" class="icon-container" data-name="Game 41">
+            <div class="icon">
+                <img src="game41.jpg" alt="Game 41">
+            </div>
+            <div class="text">Game 41</div>
+        </a>
+        <a href="game42.html" class="icon-container" data-name="Game 42">
+            <div class="icon">
+                <img src="game42.jpg" alt="Game 42">
+            </div>
+            <div class="text">Game 42</div>
+        </a>
+        <a href="game43.html" class="icon-container" data-name="Game 43">
+            <div class="icon">
+                <img src="game43.jpg" alt="Game 43">
+            </div>
+            <div class="text">Game 43</div>
+        </a>
     </div>
-
     <footer>
-        <div>&copy; 2024 K.O Sites</div>
+        <div>© 2024 K.O Sites</div>
         <div>
             <p>Developed by:</p>
-            <ul class="employee-list">
-                <li>CEO: Lucca Alonso</li>
-                <li>CFO: Maddox Snow</li>
-            </ul>
-        </div>
-    </footer>
-</body>
-</html>
+            <u
