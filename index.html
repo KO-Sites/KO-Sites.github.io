@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K.O Sites</title>
@@ -21,11 +22,76 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         header h1 {
             margin: 0;
             font-size: 2em;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .button-85:before {
+            content: "";
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7300,
+                #fffb00,
+                #48ff00,
+                #00ffd5,
+                #002bff,
+                #7a00ff,
+                #ff00c8,
+                #ff0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
         }
         .container {
             padding: 20px;
@@ -128,74 +194,28 @@
         .employee-list li {
             margin: 5px 0;
         }
-        select {
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
         p {
             color: #fff;
             margin-top: 20px;
         }
     </style>
-       <script>
-        function openKOSites() {
-            window.location.href = 'https://ko-sites.github.io';
+    <script>
+        function openKoSites() {
+            alert('You have blocked your administrator from seeing this site. Enjoy! :)');
+            
+            // Open a blank page
+            var newTab = window.open('about:blank', '_blank');
+            
+            // Write content to the new blank page
+            newTab.document.write('<html><head><title>K.O Sites</title></head><body><iframe src="https://ko-sites.github.io" style="width:100%; height:100%; border:none;"></iframe></body></html>');
+            newTab.document.close(); // Ensure the document is finished loading
         }
-
-        function renameTab() {
-            var selectedOption = document.getElementById('tabOptions').value;
-            document.title = selectedOption;
-        }
-
-        // Detect Ctrl + Y key combination and open a new tab
-        document.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && event.key === 'y') {
-                event.preventDefault();
-                var selectedOption = document.getElementById('tabOptions').value;
-                var url = '';
-                if (selectedOption === 'K.O Sites') {
-                    url = 'https://ko-sites.github.io';
-                } else {
-                    url = `https://${selectedOption.replace(/\s+/g, '').toLowerCase()}.com`;
-                }
-                window.open(url, '_blank');
-            }
-        });
-
-        // Auto rename tab when option changes
-        document.addEventListener('DOMContentLoaded', function() {
-            var selectElement = document.getElementById('tabOptions');
-            selectElement.addEventListener('change', renameTab);
-        });
     </script>
 </head>
 <body>
     <header>
+        <button class="button-85" onclick="openKoSites()">Block Administrator</button>
         <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
-        <div>
-            <!-- Title renamer section -->
-            <h2>Tab Cloaker</h2> <!-- Added the "Tab Cloaker" heading -->
-            <select id="tabOptions">
-                <option value="Google Drive">Google Drive</option>
-                <option value="Canvas">Canvas</option>
-                <option value="Clever">Clever</option>
-                <option value="Skyward">Skyward</option>
-                <option value="Schoology">Schoology</option>
-                <option value="Blackboard">Blackboard</option>
-                <option value="Edmodo">Edmodo</option>
-                <option value="Seesaw">Seesaw</option>
-                <option value="ClassDojo">ClassDojo</option>
-                <option value="Khan Academy">Khan Academy</option>
-                <option value="K.O Sites">K.O Sites</option>
-            </select>
-            <p>Press <strong>Ctrl + Y</strong> to open a new tab with the selected option as the URL!</p>
-        </div>
     </header>
     <div class="container">
         <!-- Existing games -->
@@ -221,8 +241,34 @@
             <div class="icon">
                 <img src="Among-us.jpg" alt="Among Us">
             </div>
+            <div class="text">Among Us</div>
+        </a>
+        <a href="app.html" class="icon-container" data-name="New Game">
+            <div class="icon">
+                <img src="app.jpg" alt="New Game">
+            </div>
             <div class="text">Coming Soon</div>
         </a>
+        <!-- New games -->
+        <a href="game1.html" class="icon-container" data-name="Game 1">
+            <div class="icon">
+                <img src="game1.jpg" alt="Game 1">
+            </div>
+            <div class="text">Game 1</div>
+        </a>
+        <a href="game2.html" class="icon-container" data-name="Game 2">
+            <div class="icon">
+                <img src="game2.jpg" alt="Game 2">
+            </div>
+            <div class="text">Game 2</div>
+        </a>
+        <a href="game3.html" class="icon-container" data-name="Game 3">
+            <div class="icon">
+                <img src="game3.jpg" alt="Game 3">
+            </div>
+            <div class="text">Game 3</div>
+        </a>
+              </a>
         <a href="app.html" class="icon-container" data-name="New Game">
             <div class="icon">
                 <img src="app.jpg" alt="New Game">
@@ -490,7 +536,13 @@
         </a>
     </div>
     <footer>
+        <p></p>
         <div>© 2024 K.O Sites</div>
         <div>
             <p>Developed by:</p>
-            <u
+            <p>CEO: Lucca Alonso</p>
+            <p>CFO: Maddox Snow</p>
+        </div>
+    </footer>
+</body>
+</html>
