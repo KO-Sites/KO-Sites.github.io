@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,59 +6,101 @@
     <title>K.O Sites</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
             flex-direction: column;
         }
 
         h1 {
             margin-bottom: 20px;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .embed-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
+            position: relative;
         }
 
         #youtubeURL {
-            width: 100%;
-            padding: 10px;
+            width: calc(100% - 22px);
+            padding: 12px;
             margin-bottom: 20px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            font-size: 18px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-sizing: border-box;
         }
 
         #embedButton {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 24px;
+            font-size: 18px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         #embedButton:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
 
-        .iframe-container {
+        #fullscreenButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 10; /* Ensure it stays on top */
+        }
+
+        #fullscreenButton:hover {
+            background-color: #e64a19;
+        }
+
+        #recentVideos {
             margin-top: 20px;
+            position: relative;
+        }
+
+        #recentDropdown {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        #iframeContainer {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
+            overflow: hidden;
+            margin-top: 20px;
+            border-radius: 10px;
+            background: #000;
         }
 
         iframe {
@@ -73,11 +116,12 @@
             background-color: #222;
             color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
             font-size: 14px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .footer a {
@@ -92,10 +136,17 @@
     <h1>YouTube Linker</h1>
 
     <div class="embed-container">
-        <input type="text" id="youtubeURL" placeholder="Enter YouTube video URL">
+        <input type="text" id="youtubeURL" placeholder="Enter YouTube video or Shorts URL">
         <button id="embedButton">Play Video</button>
+        <button id="fullscreenButton">Fullscreen</button>
 
-        <div class="iframe-container" id="videoEmbed" style="display: none;">
+        <div id="recentVideos">
+            <select id="recentDropdown">
+                <option value="">Select a recent video...</option>
+            </select>
+        </div>
+
+        <div id="iframeContainer" style="display: none;">
             <!-- The video iframe will be dynamically inserted here -->
         </div>
     </div>
@@ -107,34 +158,86 @@
 
     <script>
         const embedButton = document.getElementById('embedButton');
-        const videoEmbed = document.getElementById('videoEmbed');
+        const iframeContainer = document.getElementById('iframeContainer');
         const youtubeURL = document.getElementById('youtubeURL');
+        const fullscreenButton = document.getElementById('fullscreenButton');
+        const recentDropdown = document.getElementById('recentDropdown');
+
+        // Load recent videos from local storage
+        document.addEventListener('DOMContentLoaded', () => {
+            const recentVideos = JSON.parse(localStorage.getItem('recentVideos')) || [];
+            populateDropdown(recentVideos);
+        });
 
         embedButton.addEventListener('click', () => {
             const url = youtubeURL.value;
-
-            // Extract the video ID from the YouTube URL
             const videoId = extractVideoId(url);
 
             if (videoId) {
                 const embedHTML = `
-                    <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" allowfullscreen></iframe>
                 `;
-                videoEmbed.innerHTML = embedHTML;
-                videoEmbed.style.display = 'block';
+                iframeContainer.innerHTML = embedHTML;
+                iframeContainer.style.display = 'block';
+
+                // Save the URL in local storage and update dropdown
+                saveRecentVideo(url);
             } else {
                 alert('Please enter a valid YouTube URL.');
             }
         });
 
-        // Function to extract the YouTube video ID from various types of YouTube URLs
+        fullscreenButton.addEventListener('click', () => {
+            const iframe = iframeContainer.querySelector('iframe');
+            if (iframe) {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { // Firefox
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { // IE/Edge
+                    iframe.msRequestFullscreen();
+                }
+            }
+        });
+
+        recentDropdown.addEventListener('change', () => {
+            const url = recentDropdown.value;
+            if (url) {
+                youtubeURL.value = url;
+                embedButton.click();
+            }
+        });
+
         function extractVideoId(url) {
-            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/i;
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})|(?:youtube\.com\/shorts\/([^"&?/\s]{11}))/i;
             const match = url.match(regex);
-            return match ? match[1] : null;
+            return match ? (match[1] || match[2]) : null;
         }
 
-        // Automatically update the copyright year to the current year
+        function saveRecentVideo(url) {
+            let recentVideos = JSON.parse(localStorage.getItem('recentVideos')) || [];
+            if (!recentVideos.includes(url)) {
+                recentVideos = [url, ...recentVideos.slice(0, 4)]; // Keep only the 5 most recent videos
+                localStorage.setItem('recentVideos', JSON.stringify(recentVideos));
+                populateDropdown(recentVideos);
+            }
+        }
+
+        function populateDropdown(videos) {
+            recentDropdown.innerHTML = '<option value="">Select a recent video...</option>';
+            videos.forEach(url => {
+                const videoId = extractVideoId(url);
+                if (videoId) {
+                    const option = document.createElement('option');
+                    option.value = url;
+                    option.textContent = `Video ${videoId}`;
+                    recentDropdown.appendChild(option);
+                }
+            });
+        }
+
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
