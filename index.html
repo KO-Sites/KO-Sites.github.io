@@ -15,7 +15,9 @@
             flex-direction: column;
             min-height: 100vh;
             text-align: center;
+            cursor: url('https://ani.cursors-4u.net/cursors/cur-13/cur1149.png'), auto;
         }
+
         header {
             background-color: rgba(51, 51, 51, 0.8);
             padding: 10px 20px;
@@ -24,11 +26,13 @@
             align-items: center;
             position: relative;
         }
+
         header h1 {
             margin: 0;
             font-size: 2em;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         .button-85 {
             padding: 0.6em 2em;
             border: none;
@@ -44,6 +48,7 @@
             -webkit-user-select: none;
             touch-action: manipulation;
         }
+
         .button-85:before {
             content: "";
             background: linear-gradient(
@@ -71,6 +76,7 @@
             transition: opacity 0.3s ease-in-out;
             border-radius: 10px;
         }
+
         @keyframes glowing-button-85 {
             0% {
                 background-position: 0 0;
@@ -82,6 +88,7 @@
                 background-position: 0 0;
             }
         }
+
         .button-85:after {
             z-index: -1;
             content: "";
@@ -93,6 +100,12 @@
             top: 0;
             border-radius: 10px;
         }
+
+        .button-85:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 0, 150, 0.5);
+        }
+
         .container {
             padding: 20px;
             flex: 1;
@@ -101,12 +114,15 @@
             justify-content: center;
             gap: 20px;
         }
+
         .icon-container {
             position: relative;
             text-decoration: none;
             width: 100px;
             height: 100px;
+            cursor: url('https://ani.cursors-4u.net/cursors/cur-13/cur1149.png'), auto; /* Add this line */
         }
+
         .icon {
             width: 100%;
             height: 100%;
@@ -117,11 +133,13 @@
             position: relative;
             z-index: 0;
         }
+
         .icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .icon-container .text {
             position: absolute;
             bottom: 0;
@@ -139,6 +157,7 @@
             letter-spacing: 1px;
             text-shadow: 0 0 5px #fff;
         }
+
         .icon-container:hover .text {
             opacity: 1;
             text-shadow: 
@@ -151,10 +170,12 @@
                 0 0 70px #7a00ff, 
                 0 0 80px #ff00c8;
         }
+
         .icon-container:hover .icon {
             transform: scale(1.1);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
+
         .icon-container:hover:before {
             content: "";
             position: absolute;
@@ -169,6 +190,7 @@
             filter: blur(8px);
             animation: glowing-outline 20s linear infinite;
         }
+
         @keyframes glowing-outline {
             0% {
                 background-position: 0 0;
@@ -180,20 +202,24 @@
                 background-position: 0 0;
             }
         }
+
         footer {
             background-color: rgba(51, 51, 51, 0.8);
             padding: 10px 20px;
             text-align: center;
             font-size: 0.9em;
         }
+
         .employee-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .employee-list li {
             margin: 5px 0;
         }
+
         p {
             color: #fff;
             margin-top: 20px;
