@@ -1,90 +1,130 @@
-<html lang="en-us"><head>
+<html lang="en-us">
+<head>
     <title>K.O Sites</title>
-    <script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/cpmstarjsgameapi.js?ver=1346"></script><script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/mobilemodules.js?ver=1346"></script><script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/cpmstarjsgameapi.js?ver=1346"></script><script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/mobilemodules.js?ver=1346"></script><script type="text/javascript" async="" src="https://server.cpmstar.com/cached/zonefiles/372_49986_1v1.js?rnd=469098"></script><script>
-        window.addEventListener('load', function() {
-            // Create intro container
-            var introDiv = document.createElement('div');
-            introDiv.id = 'intro';
+    <script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/cpmstarjsgameapi.js?ver=1346"></script>
+    <script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/mobilemodules.js?ver=1346"></script>
+    <script type="text/javascript" async="" src="https://server.cpmstar.com/cached/zonefiles/372_49986_1v1.js?rnd=469098"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden; /* Prevent scrollbars */
+        }
 
-        
-            // Create and add image
-            var uploadedImage = document.createElement('img');
-            uploadedImage.id = 'uploadedImage';
-            uploadedImage.src = 'https://ares2.cooltext.com/images/e4a/e4a60c468ec8409c2326b38c03bb6184afe8576f.png'; // Path to your image
-            uploadedImage.style.display = 'none';
-            introDiv.appendChild(uploadedImage);
+        #intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(33, 33, 33, 1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease-in-out;
+        }
 
-            // Append intro to body
-            document.body.insertBefore(introDiv, document.body.firstChild);
+        #uploadedImage {
+            width: 100%;
+            max-width: 600px;
+            opacity: 0;
+            transform: scale(0);
+            animation: growAndSettle 1s ease forwards;
+        }
 
-            // Add styles
-            var css = `
-                #intro {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(33, 33, 33, 1);
-                    z-index: 1000;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    transition: transform 0.5s ease-in-out;
-                }
+        @keyframes growAndSettle {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            75% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
 
-                @keyframes fadeInSlam {
-                    0% { transform: scale(0); opacity: 0; }
-                    50% { transform: scale(1.2); opacity: 1; }
-                    100% { transform: scale(1); opacity: 1; }
-                }
+        /* Persistent Pull-Out Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 10px;
+            right: -90px; /* Start hidden off-screen */
+            width: 120px; /* Width when fully pulled out */
+            height: 50px;
+            background-color: rgba(33, 33, 33, 0.8);
+            border-radius: 8px 0 0 8px;
+            transition: right 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
 
-                @keyframes riseUp {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(-100px); }
-                }
+        /* Hover effect to pull out the sidebar */
+        .sidebar:hover {
+            right: 0; /* Slide out to reveal the button */
+        }
 
-                #uploadedImage {
-                    width: 100%;
-                    max-width: 600px;
-                    opacity: 0;
-                    transform: scale(0);
-                    animation: growAndSettle 1s ease forwards;
-                }
+        .sidebar img {
+            width: 80px;
+            height: auto;
+        }
 
-                @keyframes growAndSettle {
-                    0% { transform: scale(0); opacity: 0; }
-                    50% { transform: scale(1.1); opacity: 1; }
-                    75% { transform: scale(0.9); }
-                    100% { transform: scale(1); }
-                }
-            `;
-            var styleSheet = document.createElement('style');
-            styleSheet.type = 'text/css';
-            styleSheet.innerText = css;
-            document.head.appendChild(styleSheet);
+        .home-button {
+            display: none;
+            position: absolute;
+            right: 100px;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
 
-            // Trigger image fade-in and text fade-out
-            setTimeout(() => {
-                uploadedImage.style.display = 'block';
-                uploadedImage.style.opacity = 1;
-                strongDogDiv.style.opacity = 0;
-                xpDiv.style.opacity = 0;
-            }, 1500);
+        .sidebar:hover .home-button {
+            display: block; /* Show the Home button when hovering */
+        }
+    </style>
+</head>
+<body>
 
-            // Slide up and remove intro
-            setTimeout(() => {
-                introDiv.style.transform = 'translateY(-100%)';
-                setTimeout(() => { introDiv.remove(); }, 500);
-            }, 3200);
-        });
-    </script>
-<script data-ot-ignore="1" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/blueprints/hybridinstreamvideo.js?ver=1346" async=""></script><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9uiHDzQFAhqALUhTgTYJcz9XrGH2y0/9AORwCSapUO/f7Uh7ysIzyszNkuWDLqNYg8446Uj48XIstBW1qv/wAQAAACNeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3Mjc4MjcxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9R+gkZL3TWq+Z7RJ2L0c7ZN7FZD5z4mHmVvjrPitg/EMz9P3j5d3W7Vw5ZR9jtJGmWKltM4BO3smNzpCgwYuwwAAACTeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3Mjc4MjcxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><style type="text/css"><br>                #intro {<br>                    position: fixed;<br>                    top: 0;<br>                    left: 0;<br>                    width: 100%;<br>                    height: 100%;<br>                    background: rgba(33, 33, 33, 1);<br>                    z-index: 1000;<br>                    display: flex;<br>                    flex-direction: column;<br>                    align-items: center;<br>                    justify-content: center;<br>                    transition: transform 0.5s ease-in-out;<br>                }<br><br>                @keyframes fadeInSlam {<br>                    0% { transform: scale(0); opacity: 0; }<br>                    50% { transform: scale(1.2); opacity: 1; }<br>                    100% { transform: scale(1); opacity: 1; }<br>                }<br><br>                @keyframes riseUp {<br>                    0% { transform: translateY(0); }<br>                    100% { transform: translateY(-100px); }<br>                }<br><br>                #uploadedImage {<br>                    width: 100%;<br>                    max-width: 600px;<br>                    opacity: 0;<br>                    transform: scale(0);<br>                    animation: growAndSettle 1s ease forwards;<br>                }<br><br>                @keyframes growAndSettle {<br>                    0% { transform: scale(0); opacity: 0; }<br>                    50% { transform: scale(1.1); opacity: 1; }<br>                    75% { transform: scale(0.9); }<br>                    100% { transform: scale(1); }<br>                }<br>            </style></head><body>
-
- 
-<iframe src="https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/JSEngine@699000e1fa30c8a6cd0ed9c0d45b0f8dabedf0c9/build/2048/2048.xml&container=ig" width="100%" height="100%" frameborder="0"></iframe>
+<!-- Intro Section -->
+<div id="intro">
+    <img id="uploadedImage" src="https://ares2.cooltext.com/images/e4a/e4a60c468ec8409c2326b38c03bb6184afe8576f.png" style="display: none;">
+</div>
 
 
+<div class="sidebar">
+    <a href="https://ko-sites.github.io/" target="_blank">
+        <img src="https://ares2.cooltext.com/images/e4a/e4a60c468ec8409c2326b38c03bb6184afe8576f.png" alt="Go Back Home">
+    </a>
+    <div class="home-button">Home</div>
+</div>
 
-</body></html>
+<iframe src="https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/JSEngine@699000e1fa30c8a6cd0ed9c0d45b0f8dabedf0c9/build/2048/2048.xml&container=ig" 
+        width="100%" height="100%" frameborder="0"></iframe>
+
+<script>
+    window.addEventListener('load', function() {
+        // Create intro container
+        var introDiv = document.getElementById('intro');
+        var uploadedImage = document.getElementById('uploadedImage');
+
+        // Trigger image fade-in and text fade-out
+        setTimeout(() => {
+            uploadedImage.style.display = 'block';
+            uploadedImage.style.opacity = 1;
+        }, 1500);
+
+        // Slide up and remove intro
+        setTimeout(() => {
+            introDiv.style.transform = 'translateY(-100%)';
+            setTimeout(() => { introDiv.remove(); }, 500);
+        }, 3200);
+    });
+</script>
+
+</body>
+</html>
