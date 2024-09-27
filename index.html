@@ -37,25 +37,39 @@
             padding: 0.6em 2em;
             border: none;
             outline: none;
-            color: #fff;
+            color: rgb(255, 255, 255);
             background: #111;
             cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
             border-radius: 10px;
             user-select: none;
             -webkit-user-select: none;
             touch-action: manipulation;
-            position: relative; /* Position relative for z-index stacking */
         }
 
         .button-85:before {
             content: "";
-            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7300,
+                #fffb00,
+                #48ff00,
+                #00ffd5,
+                #002bff,
+                #7a00ff,
+                #ff00c8,
+                #ff0000
+            );
             position: absolute;
             top: -2px;
             left: -2px;
             background-size: 400%;
             z-index: -1;
             filter: blur(5px);
+            -webkit-filter: blur(5px);
             width: calc(100% + 4px);
             height: calc(100% + 4px);
             animation: glowing-button-85 20s linear infinite;
@@ -64,9 +78,27 @@
         }
 
         @keyframes glowing-button-85 {
-            0% { background-position: 0 0; }
-            50% { background-position: 400% 0; }
-            100% { background-position: 0 0; }
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
         }
 
         .button-85:hover {
@@ -88,7 +120,7 @@
             text-decoration: none;
             width: 100px;
             height: 100px;
-            cursor: url('https://ani.cursors-4u.net/cursors/cur-13/cur1149.png'), auto;
+            cursor: url('https://ani.cursors-4u.net/cursors/cur-13/cur1149.png'), auto; /* Add this line */
         }
 
         .icon {
@@ -99,6 +131,7 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             position: relative;
+            z-index: 0;
         }
 
         .icon img {
@@ -119,6 +152,7 @@
             background: transparent;
             opacity: 0;
             transition: opacity 0.3s ease;
+            font-family: Arial, sans-serif;
             font-weight: bold;
             letter-spacing: 1px;
             text-shadow: 0 0 5px #fff;
@@ -126,14 +160,47 @@
 
         .icon-container:hover .text {
             opacity: 1;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff7300, 0 0 30px #fffb00, 
-                         0 0 40px #48ff00, 0 0 50px #00ffd5, 0 0 60px #002bff, 
-                         0 0 70px #7a00ff, 0 0 80px #ff00c8;
+            text-shadow: 
+                0 0 10px #ff0000, 
+                0 0 20px #ff7300, 
+                0 0 30px #fffb00, 
+                0 0 40px #48ff00, 
+                0 0 50px #00ffd5, 
+                0 0 60px #002bff, 
+                0 0 70px #7a00ff, 
+                0 0 80px #ff00c8;
         }
 
         .icon-container:hover .icon {
             transform: scale(1.1);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        .icon-container:hover:before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(8px);
+            animation: glowing-outline 20s linear infinite;
+        }
+
+        @keyframes glowing-outline {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
         }
 
         footer {
@@ -149,57 +216,32 @@
             margin: 0;
         }
 
+        .employee-list li {
+            margin: 5px 0;
+        }
+
         p {
             color: #fff;
             margin-top: 20px;
-        }
-
-        /* Search Bar Styles */
-        .search-container {
-            margin-right: 20px;
-        }
-
-        .search-input {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            font-size: 1em;
-            outline: none;
-            color: #fff;
-            background-color: #333; /* Adding background for better visibility */
-        }
-
-        .search-input::placeholder {
-            color: #aaa;
         }
     </style>
     <script>
         function openKoSites() {
             alert('You have blocked your administrator from seeing this site. Enjoy! :)');
+            
+            // Open a blank page
             var newTab = window.open('about:blank', '_blank');
+            
+            // Write content to the new blank page
             newTab.document.write('<html><head><title>K.O Sites</title></head><body><iframe src="https://ko-sites.github.io" style="width:100%; height:100%; border:none;"></iframe></body></html>');
-            newTab.document.close();
-        }
-
-        function searchGames() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const icons = document.querySelectorAll('.icon-container');
-
-            icons.forEach(icon => {
-                const gameName = icon.getAttribute('data-name').toLowerCase();
-                icon.style.display = gameName.includes(query) ? 'block' : 'none';
-            });
+            newTab.document.close(); // Ensure the document is finished loading
         }
     </script>
 </head>
 <body>
     <header>
-        <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
-        <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Search games/apps..." oninput="searchGames()">
-        </div>
         <button class="button-85" onclick="openKoSites()">Block Administrator</button>
+        <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
     </header>
     <div class="container">
         <!-- Existing games -->
@@ -252,7 +294,7 @@
             </div>
             <div class="text">House Of Hazzards</div>
         </a>
-              
+              </a>
         <a href="impossiblequiz.html" class="icon-container" data-name="Impossible Quiz">
             <div class="icon">
                 <img src="impossiblequiz.jpg" alt="Impossible Quiz">
@@ -364,7 +406,7 @@
         </a>
         <a href="fnaf1.html" class="icon-container" data-name="Fnaf">
             <div class="icon">
-                <img src="fnaf1.jpg" alt="Fnaf&quot;">
+                <img src="fnaf1.jpg" alt=Fnaf">
             </div>
             <div class="text">Fnaf</div>
         </a>
@@ -519,7 +561,7 @@
             <div class="text">Game 43</div>
         </a>
     </div>
-    <footer>
+   <footer>
         <p>© 2024 K.O Sites. All Rights Reserved.</p>
         <ul class="employee-list">
             <li>Developer: Lucca & Maddox</li>
