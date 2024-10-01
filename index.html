@@ -49,6 +49,38 @@
             touch-action: manipulation;
         }
 
+        /* Add your existing styles here */
+
+        .search-container {
+            margin: 20px 0;
+        }
+
+        .search-container input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
         .button-85:before {
             content: "";
             background: linear-gradient(
@@ -228,13 +260,23 @@
     <script>
         function openKoSites() {
             alert('You have blocked your administrator from seeing this site. Enjoy! :)');
-            
-            // Open a blank page
             var newTab = window.open('about:blank', '_blank');
-            
-            // Write content to the new blank page
             newTab.document.write('<html><head><title>K.O Sites</title></head><body><iframe src="https://ko-sites.github.io" style="width:100%; height:100%; border:none;"></iframe></body></html>');
-            newTab.document.close(); // Ensure the document is finished loading
+            newTab.document.close();
+        }
+
+        function filterGames() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const icons = document.querySelectorAll('.icon-container');
+
+            icons.forEach(icon => {
+                const name = icon.getAttribute('data-name').toLowerCase();
+                if (name.includes(input)) {
+                    icon.style.display = '';
+                } else {
+                    icon.style.display = 'none';
+                }
+            });
         }
     </script>
 </head>
@@ -243,6 +285,9 @@
         <button class="button-85" onclick="openKoSites()">Block Administrator</button>
         <h1>𝕂.𝕆 𝕊𝕚𝕥𝕖𝕤</h1>
     </header>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search games..." onkeyup="filterGames()">
+    </div>
     <div class="container">
         <!-- Existing games -->
         <a href="canvas.html" class="icon-container" data-name="K.O Sites Members">
@@ -553,19 +598,497 @@
                 <img src="game42.jpg" alt="Game 42">
             </div>
             <div class="text">Game 42</div>
-        </a>
-        <a href="game43.html" class="icon-container" data-name="Game 43">
-            <div class="icon">
-                <img src="game43.jpg" alt="Game 43">
-            </div>
-            <div class="text">Game 43</div>
-        </a>
+        <a href="game44.html" class="icon-container" data-name="Game 44">
+    <div class="icon">
+        <img src="game44.jpg" alt="Game 44">
     </div>
-   <footer>
+    <div class="text">Game 44</div>
+</a>
+<a href="game45.html" class="icon-container" data-name="Game 45">
+    <div class="icon">
+        <img src="game45.jpg" alt="Game 45">
+    </div>
+    <div class="text">Game 45</div>
+</a>
+<a href="game46.html" class="icon-container" data-name="Game 46">
+    <div class="icon">
+        <img src="game46.jpg" alt="Game 46">
+    </div>
+    <div class="text">Game 46</div>
+</a>
+<a href="game47.html" class="icon-container" data-name="Game 47">
+    <div class="icon">
+        <img src="game47.jpg" alt="Game 47">
+    </div>
+    <div class="text">Game 47</div>
+</a>
+<a href="game48.html" class="icon-container" data-name="Game 48">
+    <div class="icon">
+        <img src="game48.jpg" alt="Game 48">
+    </div>
+    <div class="text">Game 48</div>
+</a>
+<a href="game49.html" class="icon-container" data-name="Game 49">
+    <div class="icon">
+        <img src="game49.jpg" alt="Game 49">
+    </div>
+    <div class="text">Game 49</div>
+</a>
+<a href="game50.html" class="icon-container" data-name="Game 50">
+    <div class="icon">
+        <img src="game50.jpg" alt="Game 50">
+    </div>
+    <div class="text">Game 50</div>
+</a>
+<a href="game51.html" class="icon-container" data-name="Game 51">
+    <div class="icon">
+        <img src="game51.jpg" alt="Game 51">
+    </div>
+    <div class="text">Game 51</div>
+</a>
+<a href="game52.html" class="icon-container" data-name="Game 52">
+    <div class="icon">
+        <img src="game52.jpg" alt="Game 52">
+    </div>
+    <div class="text">Game 52</div>
+</a>
+<a href="game53.html" class="icon-container" data-name="Game 53">
+    <div class="icon">
+        <img src="game53.jpg" alt="Game 53">
+    </div>
+    <div class="text">Game 53</div>
+</a>
+<a href="game54.html" class="icon-container" data-name="Game 54">
+    <div class="icon">
+        <img src="game54.jpg" alt="Game 54">
+    </div>
+    <div class="text">Game 54</div>
+</a>
+<a href="game55.html" class="icon-container" data-name="Game 55">
+    <div class="icon">
+        <img src="game55.jpg" alt="Game 55">
+    </div>
+    <div class="text">Game 55</div>
+</a>
+<a href="game56.html" class="icon-container" data-name="Game 56">
+    <div class="icon">
+        <img src="game56.jpg" alt="Game 56">
+    </div>
+    <div class="text">Game 56</div>
+</a>
+<a href="game57.html" class="icon-container" data-name="Game 57">
+    <div class="icon">
+        <img src="game57.jpg" alt="Game 57">
+    </div>
+    <div class="text">Game 57</div>
+</a>
+<a href="game58.html" class="icon-container" data-name="Game 58">
+    <div class="icon">
+        <img src="game58.jpg" alt="Game 58">
+    </div>
+    <div class="text">Game 58</div>
+</a>
+<a href="game59.html" class="icon-container" data-name="Game 59">
+    <div class="icon">
+        <img src="game59.jpg" alt="Game 59">
+    </div>
+    <div class="text">Game 59</div>
+</a>
+<a href="game60.html" class="icon-container" data-name="Game 60">
+    <div class="icon">
+        <img src="game60.jpg" alt="Game 60">
+    </div>
+    <div class="text">Game 60</div>
+</a>
+<a href="game61.html" class="icon-container" data-name="Game 61">
+    <div class="icon">
+        <img src="game61.jpg" alt="Game 61">
+    </div>
+    <div class="text">Game 61</div>
+</a>
+<a href="game62.html" class="icon-container" data-name="Game 62">
+    <div class="icon">
+        <img src="game62.jpg" alt="Game 62">
+    </div>
+    <div class="text">Game 62</div>
+</a>
+<a href="game63.html" class="icon-container" data-name="Game 63">
+    <div class="icon">
+        <img src="game63.jpg" alt="Game 63">
+    </div>
+    <div class="text">Game 63</div>
+</a>
+<a href="game64.html" class="icon-container" data-name="Game 64">
+    <div class="icon">
+        <img src="game64.jpg" alt="Game 64">
+    </div>
+    <div class="text">Game 64</div>
+</a>
+<a href="game65.html" class="icon-container" data-name="Game 65">
+    <div class="icon">
+        <img src="game65.jpg" alt="Game 65">
+    </div>
+    <div class="text">Game 65</div>
+</a>
+<a href="game66.html" class="icon-container" data-name="Game 66">
+    <div class="icon">
+        <img src="game66.jpg" alt="Game 66">
+    </div>
+    <div class="text">Game 66</div>
+</a>
+<a href="game67.html" class="icon-container" data-name="Game 67">
+    <div class="icon">
+        <img src="game67.jpg" alt="Game 67">
+    </div>
+    <div class="text">Game 67</div>
+</a>
+<a href="game68.html" class="icon-container" data-name="Game 68">
+    <div class="icon">
+        <img src="game68.jpg" alt="Game 68">
+    </div>
+    <div class="text">Game 68</div>
+</a>
+<a href="game69.html" class="icon-container" data-name="Game 69">
+    <div class="icon">
+        <img src="game69.jpg" alt="Game 69">
+    </div>
+    <div class="text">Game 69</div>
+</a>
+<a href="game70.html" class="icon-container" data-name="Game 70">
+    <div class="icon">
+        <img src="game70.jpg" alt="Game 70">
+    </div>
+    <div class="text">Game 70</div>
+</a>
+<a href="game71.html" class="icon-container" data-name="Game 71">
+    <div class="icon">
+        <img src="game71.jpg" alt="Game 71">
+    </div>
+    <div class="text">Game 71</div>
+</a>
+<a href="game72.html" class="icon-container" data-name="Game 72">
+    <div class="icon">
+        <img src="game72.jpg" alt="Game 72">
+    </div>
+    <div class="text">Game 72</div>
+</a>
+<a href="game73.html" class="icon-container" data-name="Game 73">
+    <div class="icon">
+        <img src="game73.jpg" alt="Game 73">
+    </div>
+    <div class="text">Game 73</div>
+</a>
+<a href="game74.html" class="icon-container" data-name="Game 74">
+    <div class="icon">
+        <img src="game74.jpg" alt="Game 74">
+    </div>
+    <div class="text">Game 74</div>
+</a>
+<a href="game75.html" class="icon-container" data-name="Game 75">
+    <div class="icon">
+        <img src="game75.jpg" alt="Game 75">
+    </div>
+    <div class="text">Game 75</div>
+</a>
+<a href="game76.html" class="icon-container" data-name="Game 76">
+    <div class="icon">
+        <img src="game76.jpg" alt="Game 76">
+    </div>
+    <div class="text">Game 76</div>
+</a>
+<a href="game77.html" class="icon-container" data-name="Game 77">
+    <div class="icon">
+        <img src="game77.jpg" alt="Game 77">
+    </div>
+    <div class="text">Game 77</div>
+</a>
+<a href="game78.html" class="icon-container" data-name="Game 78">
+    <div class="icon">
+        <img src="game78.jpg" alt="Game 78">
+    </div>
+    <div class="text">Game 78</div>
+</a>
+<a href="game79.html" class="icon-container" data-name="Game 79">
+    <div class="icon">
+        <img src="game79.jpg" alt="Game 79">
+    </div>
+    <div class="text">Game 79</div>
+<a href="game81.html" class="icon-container" data-name="Game 81">
+    <div class="icon">
+        <img src="game81.jpg" alt="Game 81">
+    </div>
+    <div class="text">Game 81</div>
+</a>
+<a href="game82.html" class="icon-container" data-name="Game 82">
+    <div class="icon">
+        <img src="game82.jpg" alt="Game 82">
+    </div>
+    <div class="text">Game 82</div>
+</a>
+<a href="game83.html" class="icon-container" data-name="Game 83">
+    <div class="icon">
+        <img src="game83.jpg" alt="Game 83">
+    </div>
+    <div class="text">Game 83</div>
+</a>
+<a href="game84.html" class="icon-container" data-name="Game 84">
+    <div class="icon">
+        <img src="game84.jpg" alt="Game 84">
+    </div>
+    <div class="text">Game 84</div>
+</a>
+<a href="game85.html" class="icon-container" data-name="Game 85">
+    <div class="icon">
+        <img src="game85.jpg" alt="Game 85">
+    </div>
+    <div class="text">Game 85</div>
+</a>
+<a href="game86.html" class="icon-container" data-name="Game 86">
+    <div class="icon">
+        <img src="game86.jpg" alt="Game 86">
+    </div>
+    <div class="text">Game 86</div>
+</a>
+<a href="game87.html" class="icon-container" data-name="Game 87">
+    <div class="icon">
+        <img src="game87.jpg" alt="Game 87">
+    </div>
+    <div class="text">Game 87</div>
+</a>
+<a href="game88.html" class="icon-container" data-name="Game 88">
+    <div class="icon">
+        <img src="game88.jpg" alt="Game 88">
+    </div>
+    <div class="text">Game 88</div>
+</a>
+<a href="game89.html" class="icon-container" data-name="Game 89">
+    <div class="icon">
+        <img src="game89.jpg" alt="Game 89">
+    </div>
+    <div class="text">Game 89</div>
+</a>
+<a href="game90.html" class="icon-container" data-name="Game 90">
+    <div class="icon">
+        <img src="game90.jpg" alt="Game 90">
+    </div>
+    <div class="text">Game 90</div>
+</a>
+<a href="game91.html" class="icon-container" data-name="Game 91">
+    <div class="icon">
+        <img src="game91.jpg" alt="Game 91">
+    </div>
+    <div class="text">Game 91</div>
+</a>
+<a href="game92.html" class="icon-container" data-name="Game 92">
+    <div class="icon">
+        <img src="game92.jpg" alt="Game 92">
+    </div>
+    <div class="text">Game 92</div>
+</a>
+<a href="game93.html" class="icon-container" data-name="Game 93">
+    <div class="icon">
+        <img src="game93.jpg" alt="Game 93">
+    </div>
+    <div class="text">Game 93</div>
+</a>
+<a href="game94.html" class="icon-container" data-name="Game 94">
+    <div class="icon">
+        <img src="game94.jpg" alt="Game 94">
+    </div>
+    <div class="text">Game 94</div>
+</a>
+<a href="game95.html" class="icon-container" data-name="Game 95">
+    <div class="icon">
+        <img src="game95.jpg" alt="Game 95">
+    </div>
+    <div class="text">Game 95</div>
+</a>
+<a href="game96.html" class="icon-container" data-name="Game 96">
+    <div class="icon">
+        <img src="game96.jpg" alt="Game 96">
+    </div>
+    <div class="text">Game 96</div>
+</a>
+<a href="game97.html" class="icon-container" data-name="Game 97">
+    <div class="icon">
+        <img src="game97.jpg" alt="Game 97">
+    </div>
+    <div class="text">Game 97</div>
+</a>
+<a href="game98.html" class="icon-container" data-name="Game 98">
+    <div class="icon">
+        <img src="game98.jpg" alt="Game 98">
+    </div>
+    <div class="text">Game 98</div>
+</a>
+<a href="game99.html" class="icon-container" data-name="Game 99">
+    <div class="icon">
+        <img src="game99.jpg" alt="Game 99">
+    </div>
+    <div class="text">Game 99</div>
+</a>
+<a href="game100.html" class="icon-container" data-name="Game 100">
+    <div class="icon">
+        <img src="game100.jpg" alt="Game 100">
+    </div>
+    <div class="text">Game 100</div>
+</a>
+<a href="game101.html" class="icon-container" data-name="Game 101">
+    <div class="icon">
+        <img src="game101.jpg" alt="Game 101">
+    </div>
+    <div class="text">Game 101</div>
+</a>
+<a href="game102.html" class="icon-container" data-name="Game 102">
+    <div class="icon">
+        <img src="game102.jpg" alt="Game 102">
+    </div>
+    <div class="text">Game 102</div>
+</a>
+<a href="game103.html" class="icon-container" data-name="Game 103">
+    <div class="icon">
+        <img src="game103.jpg" alt="Game 103">
+    </div>
+    <div class="text">Game 103</div>
+</a>
+<a href="game104.html" class="icon-container" data-name="Game 104">
+    <div class="icon">
+        <img src="game104.jpg" alt="Game 104">
+    </div>
+    <div class="text">Game 104</div>
+</a>
+<a href="game105.html" class="icon-container" data-name="Game 105">
+    <div class="icon">
+        <img src="game105.jpg" alt="Game 105">
+    </div>
+    <div class="text">Game 105</div>
+</a>
+<a href="game106.html" class="icon-container" data-name="Game 106">
+    <div class="icon">
+        <img src="game106.jpg" alt="Game 106">
+    </div>
+    <div class="text">Game 106</div>
+</a>
+<a href="game107.html" class="icon-container" data-name="Game 107">
+    <div class="icon">
+        <img src="game107.jpg" alt="Game 107">
+    </div>
+    <div class="text">Game 107</div>
+</a>
+<a href="game108.html" class="icon-container" data-name="Game 108">
+    <div class="icon">
+        <img src="game108.jpg" alt="Game 108">
+    </div>
+    <div class="text">Game 108</div>
+</a>
+<a href="game109.html" class="icon-container" data-name="Game 109">
+    <div class="icon">
+        <img src="game109.jpg" alt="Game 109">
+    </div>
+    <div class="text">Game 109</div>
+</a>
+<a href="game110.html" class="icon-container" data-name="Game 110">
+    <div class="icon">
+        <img src="game110.jpg" alt="Game 110">
+    </div>
+    <div class="text">Game 110</div>
+</a>
+<a href="game111.html" class="icon-container" data-name="Game 111">
+    <div class="icon">
+        <img src="game111.jpg" alt="Game 111">
+    </div>
+    <div class="text">Game 111</div>
+</a>
+<a href="game112.html" class="icon-container" data-name="Game 112">
+    <div class="icon">
+        <img src="game112.jpg" alt="Game 112">
+    </div>
+    <div class="text">Game 112</div>
+</a>
+<a href="game113.html" class="icon-container" data-name="Game 113">
+    <div class="icon">
+        <img src="game113.jpg" alt="Game 113">
+    </div>
+    <div class="text">Game 113</div>
+</a>
+<a href="game114.html" class="icon-container" data-name="Game 114">
+    <div class="icon">
+        <img src="game114.jpg" alt="Game 114">
+    </div>
+    <div class="text">Game 114</div>
+</a>
+<a href="game115.html" class="icon-container" data-name="Game 115">
+    <div class="icon">
+        <img src="game115.jpg" alt="Game 115">
+    </div>
+    <div class="text">Game 115</div>
+</a>
+<a href="game116.html" class="icon-container" data-name="Game 116">
+    <div class="icon">
+        <img src="game116.jpg" alt="Game 116">
+    </div>
+    <div class="text">Game 116</div>
+</a>
+<a href="game117.html" class="icon-container" data-name="Game 117">
+    <div class="icon">
+        <img src="game117.jpg" alt="Game 117">
+    </div>
+    <div class="text">Game 117</div>
+</a>
+<a href="game118.html" class="icon-container" data-name="Game 118">
+    <div class="icon">
+        <img src="game118.jpg" alt="Game 118">
+    </div>
+    <div class="text">Game 118</div>
+</a>
+<a href="game119.html" class="icon-container" data-name="Game 119">
+    <div class="icon">
+        <img src="game119.jpg" alt="Game 119">
+    </div>
+    <div class="text">Game 119</div>
+</a>
+<a href="game120.html" class="icon-container" data-name="Game 120">
+    <div class="icon">
+        <img src="game120.jpg" alt="Game 120">
+    </div>
+    <div class="text">Game 120</div>
+</a>
+<a href="game121.html" class="icon-container" data-name="Game 121">
+    <div class="icon">
+        <img src="game121.jpg" alt="Game 121">
+    </div>
+    <div class="text">Game 121</div>
+</a>
+<a href="game122.html" class="icon-container" data-name="Game 122">
+    <div class="icon">
+        <img src="game122.jpg" alt="Game 122">
+    </div>
+    <div class="text">Game 122</div>
+</a>
+<a href="game123.html" class="icon-container" data-name="Game 123">
+    <div class="icon">
+        <img src="game123.jpg" alt="Game 123">
+    </div>
+    <div class="text">Game 123</div>
+</a>
+<a href="game124.html" class="icon-container" data-name="Game 124">
+    <div class="icon">
+        <img src="game124.jpg" alt="Game 124">
+    </div>
+    <div class="text">Game 124</div>
+</a>
+<a href="game125.html" class="icon-container" data-name="Game 125">
+    <div class="icon">
+        <img src="game125.jpg" alt="Game 125">
+    </div>
+    <div class="text">Game 125</div>
+</a>
+    </div>
+    <footer>
         <p>© 2024 K.O Sites. All Rights Reserved.</p>
         <ul class="employee-list">
             <li>Developer: Lucca & Maddox</li>
-            <li>Design: Lucca Team</li>
+            <li>Design: Lucca</li>
             <li>Support: ko.bussiness.acc@gmail.com</li>
         </ul>
     </footer>
