@@ -7,68 +7,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>K.O Sites</title>
   <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      min-height: 100vh;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .container:hover {
+      transform: translateY(-10px);
     }
 
     .input-box {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .input-field {
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
       margin-right: 5px;
-      width: 150px;
+      width: 180px;
+      font-size: 16px;
+      transition: box-shadow 0.3s;
+    }
+
+    .input-field:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
 
     .button {
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 10px 15px;
+      padding: 10px 20px;
       text-align: center;
       text-decoration: none;
-      display: inline-block;
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
     .button:hover {
       background-color: #3e8e41;
+      transform: scale(1.05);
     }
 
     .instructions {
-      margin-bottom: 20px;
-      font-size: 18px;
-      color: #333;
+      margin-bottom: 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .copy-instruction {
+      margin-top: 10px;
+      font-size: 16px;
+      text-align: center;
+      color: #ffdd57; /* Highlight color */
+    }
+
+    .additional-instructions {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: center;
+      color: #fff; /* Keep it white */
     }
 
     .image-box img {
-      width: 200px;
+      width: 400px; /* Increased width for a larger image */
       height: auto;
       margin-top: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .image-box img:hover {
-      transform: scale(2.5); /* Zooms in by 40% */
+      transform: scale(1.1); /* Slight zoom on hover */
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
 
     /* Footer styling */
     .footer {
       width: 100%;
-      background-color: #808080;
+      background-color: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 10px 0;
       position: absolute;
@@ -76,6 +118,11 @@
       left: 0;
       font-size: 14px;
       color: white;
+      transition: background-color 0.3s;
+    }
+
+    .footer:hover {
+      background-color: rgba(0, 0, 0, 0.9);
     }
   </style>
 </head>
@@ -87,9 +134,11 @@
       <input type="text" id="movie-id" class="input-field" placeholder="Enter Movie ID">
       <button id="open-button" class="button">Open Movie</button>
     </div>
+    <div class="copy-instruction">Copy this part of the link:</div>
     <div class="image-box">
       <img src="https://i.ibb.co/prv1pck/Screenshot-2024-10-01-001214.png" alt="Instruction Image">
     </div>
+    <div class="additional-instructions">Make a new tab, type in IMDb, then whatever movie you want. If IMDb has it, click the first link, then copy the part of the link that is shown in the image.</div>
   </div>
 
   <div class="footer">
@@ -108,17 +157,11 @@
         return;
       }
 
-      // Open an about:blank tab
       const newWindow = window.open('about:blank', '_blank');
-
-      // Create an iframe within the about:blank tab
       const iframe = newWindow.document.createElement('iframe');
-
-      // Construct the movie URL using the entered IMDb ID
       const movieUrl = `https://multiembed.mov/?video_id=${movieId}`;
       iframe.src = movieUrl;
 
-      // Style the iframe to fill the entire tab
       iframe.style.width = '100%';
       iframe.style.height = '100%';
       iframe.style.border = 'none';
@@ -126,10 +169,7 @@
       iframe.style.top = '0';
       iframe.style.left = '0';
 
-      // Append the iframe to the about:blank tab's body
       newWindow.document.body.appendChild(iframe);
-
-      // Clear the input field
       movieIdInput.value = '';
     });
   </script>
