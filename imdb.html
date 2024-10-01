@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base target="_blank">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K.O Sites</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .input-field {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-right: 5px;
+      width: 150px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+
+    .instructions {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .image-box img {
+      width: 200px;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .image-box img:hover {
+      transform: scale(2.5); /* Zooms in by 40% */
+    }
+
+    /* Footer styling */
+    .footer {
+      width: 100%;
+      background-color: #808080;
+      text-align: center;
+      padding: 10px 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 14px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="instructions">Paste this part of the IMDb movie link (e.g., tt22022452) in the text below:</div>
+    <div class="input-box">
+      <input type="text" id="movie-id" class="input-field" placeholder="Enter Movie ID">
+      <button id="open-button" class="button">Open Movie</button>
+    </div>
+    <div class="image-box">
+      <img src="https://i.ibb.co/prv1pck/Screenshot-2024-10-01-001214.png" alt="Instruction Image">
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2024 K.O Sites. All rights reserved.
+  </div>
+
+  <script>
+    const openButton = document.getElementById('open-button');
+    const movieIdInput = document.getElementById('movie-id');
+
+    openButton.addEventListener('click', function () {
+      const movieId = movieIdInput.value.trim();
+
+      if (movieId.length === 0) {
+        alert('Please enter a valid Movie ID.');
+        return;
+      }
+
+      // Open an about:blank tab
+      const newWindow = window.open('about:blank', '_blank');
+
+      // Create an iframe within the about:blank tab
+      const iframe = newWindow.document.createElement('iframe');
+
+      // Construct the movie URL using the entered IMDb ID
+      const movieUrl = `https://multiembed.mov/?video_id=${movieId}`;
+      iframe.src = movieUrl;
+
+      // Style the iframe to fill the entire tab
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = 'none';
+      iframe.style.position = 'absolute';
+      iframe.style.top = '0';
+      iframe.style.left = '0';
+
+      // Append the iframe to the about:blank tab's body
+      newWindow.document.body.appendChild(iframe);
+
+      // Clear the input field
+      movieIdInput.value = '';
+    });
+  </script>
+
+</body>
+
+</html>
