@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Tester</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .textarea-container {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .CodeMirror {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .lint-feedback {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            max-width: 800px;
+            text-align: left;
+        }
+        .copyright {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>K.O Sites Code Tester</h1>
+    <div class="textarea-container">
+        <div id="htmlEditor"></div>
+        <div id="cssEditor"></div>
+        <div id="jsEditor"></div>
+    </div>
+    <button id="runButton">Run Code</button>
+    <button id="downloadButton">Download Code</button>
+    <div class="lint-feedback" id="lintFeedback"></div>
+
+    <div class="copyright">
+        &copy; 2024 K.O Sites. All rights reserved.
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/javascript/javascript.min.js"></script>
+    
+    <script>
+        const htmlEditor = CodeMirror(document.getElementById('htmlEditor'), {
+            mode: 'text/html',
+            lineNumbers: true,
+            theme: 'default'
+        });
+
+        const cssEditor = CodeMirror(document.getElementById('cssEditor'), {
+            mode: 'text/css',
+            lineNumbers: true,
+            theme: 'default'
+        });
+
+        const jsEditor = CodeMirror(document.getElementById('jsEditor'), {
+            mode: 'text/javascript',
+            lineNumbers: true,
+            theme: 'default'
+        });
+
+        function lintCode() {
+            let feedback = '';
+            const htmlCode = htmlEditor.getValue();
+            const cssCode = cssEditor.getValue();
+            const jsCode = jsEditor.getValue();
+
+            // Simple HTML Linting
+            if (!/<\/?[\w\s="'-]*>/.test(htmlCode)) {
+                feedback += 'HTML seems to have unclosed tags.\n';
+            }
+
+            // Simple JavaScript Linting
+            if (!jsCode.trim().endsWith(';')) {
+                feedback += 'JavaScript code should end with a semicolon.\n';
+            }
+
+            // Add more linting rules as needed
+
+            document.getElementById('lintFeedback').textContent = feedback || 'No issues found!';
+        }
+
+        document.getElementById('runButton').addEventListener('click', function() {
+            lintCode(); // Lint code before running it
+            const htmlCode = htmlEditor.getValue();
+            const cssCode = cssEditor.getValue();
+            const jsCode = jsEditor.getValue();
+
+            const newWindow = window.open('about:blank');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>K.O Sites Code Test</title>
+                    <style>${cssCode}</style>
+                </head>
+                <body>
+                    ${htmlCode}
+                    <script>
+                        try {
+                            ${jsCode}
+                        } catch (e) {
+                            document.body.innerHTML += '<h1 style="color: red;">Error:</h1><pre>' + e.message + '</pre>';
+                        }
+                    <\/script>
+                </body>
+                </html>
+            `);
+            newWindow.document.close();
+        });
+
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            const htmlCode = htmlEditor.getValue();
+            const cssCode = cssEditor.getValue();
+            const jsCode = jsEditor.getValue();
+
+            const zip = new JSZip();
+            zip.file("index.html", htmlCode);
+            zip.file("styles.css", cssCode);
+            zip.file("script.js", jsCode);
+
+            zip.generateAsync({ type: "blob" }).then(function(content) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(content);
+                link.download = "code.zip";
+                link.click();
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</body>
+</html>
